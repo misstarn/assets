@@ -47,7 +47,7 @@
             imgFancybox.href = url;
 
             imgFancybox.setAttribute("data-fancybox", "gallery");
-            imgFancybox.innerHTML = `<img src="${url}" class="hover:scale-105 duration-500 aspect-square object-contain" alt="${file.name}">`
+            imgFancybox.innerHTML = `<img src="${url}" class="hover:scale-105 duration-500 aspect-square object-contain shadow-lg" alt="${file.name}">`
 
             const copy = document.createElement("div");
 
@@ -76,3 +76,4 @@
 </body>
 
 </html>
+
