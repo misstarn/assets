@@ -49,7 +49,7 @@
             imgFancybox.setAttribute("data-fancybox", "gallery");
             const imgfix = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']
             imgFancybox.innerHTML = `
-                <img src="${url}" class="hover:scale-105 duration-500 object-contain ${imgfix.includes(url.split('.').pop()) ? '' : 'hidden'}" alt="${imgfix.includes(url.split('.').pop()) ? url : url.split('.').pop() + '文件'}">
+                <img src="${url}" class="hover:scale-105 duration-500 size-full object-contain ${imgfix.includes(url.split('.').pop()) ? '' : 'hidden'}" alt="${imgfix.includes(url.split('.').pop()) ? url : url.split('.').pop() + '文件'}">
             `
 
             const copy = document.createElement("div");
