@@ -43,14 +43,13 @@
             const url = 'https://misstarn.github.io/assets/' + file.path
 
             const imgFancybox = document.createElement("a");
-            imgFancybox.classList.add("w-full", "overflow-hidden", "rounded-md", "shadow-sm");
+            imgFancybox.classList.add("w-full", "overflow-hidden", "rounded-md", "shadow-sm", "aspect-square");
             imgFancybox.href = url;
-
           
             imgFancybox.setAttribute("data-fancybox", "gallery");
             const imgfix = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']
             imgFancybox.innerHTML = `
-                <img src="${url}" class="hover:scale-105 duration-500 aspect-square object-contain" alt="${imgfix.includes(url.split('.').pop()) ? url : url.split('.').pop() + '文件'}">
+                <img src="${url}" class="hover:scale-105 duration-500 object-contain ${imgfix.includes(url.split('.').pop()) ? '' : 'hidden'}" alt="${imgfix.includes(url.split('.').pop()) ? url : url.split('.').pop() + '文件'}">
             `
 
             const copy = document.createElement("div");
@@ -74,8 +73,9 @@
             gallery.appendChild(box);
 
             const title = document.createElement("div");
-            title.classList = `text-center text-sm  border  border-purple-200 px-3 py-2 rounded-md mt-3`;
+            title.classList = `text-center text-sm overflow-hidden border border-purple-200 px-3 py-1 rounded-md mt-3 line-clamp-1`;
             title.textContent = file?.name;
+            title.setAttribute("title", file?.name);
 
             // 插入到imgFancybox后面
             imgFancybox.insertAdjacentElement("afterend", title);
