@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的图库</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <title>我的文件</title>
+    <script src="https://misstarn.github.io/assets/public/browser@4.js"></script>
+    <link rel="stylesheet" href="https://misstarn.github.io/assets/public/fancybox.css" />
     <style type="text/tailwindcss">
         @theme {
         --color-clifford: #da373d;
@@ -17,13 +17,13 @@
 
 <body>
     <div class="container mx-auto py-10">
-        <h1 class="text-center mb-5 font-bold text-3xl">我的图库</h1>
+        <h1 class="text-center mb-10 font-bold text-3xl">我的文件</h1>
         <div class="grid grid-cols-8 gap-4" id="gallery">
             <!-- 图片列表 -->
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://misstarn.github.io/assets/public/fancybox.umd.js"></script>
     <script>
         Fancybox.bind("[data-fancybox]", {
         // Your custom options
@@ -47,7 +47,11 @@
             imgFancybox.href = url;
 
             imgFancybox.setAttribute("data-fancybox", "gallery");
-            imgFancybox.innerHTML = `<img src="${url}" class="hover:scale-105 duration-500 aspect-square object-contain shadow-lg" alt="${file.name}">`
+            const imgfix = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']
+            imgFancybox.innerHTML = `
+                <img src="${url}" class="hover:scale-105 duration-500 aspect-square object-contain shadow-sm" alt="${imgfix.includes(url.split('.').pop()) ? url : url.split('.').pop() + '文件'}">
+                <div class="text-center mt-3">${file.name}</div>
+            `
 
             const copy = document.createElement("div");
 
@@ -76,4 +80,3 @@
 </body>
 
 </html>
-
